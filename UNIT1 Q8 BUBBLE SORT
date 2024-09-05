@@ -1,15 +1,14 @@
 #include <stdio.h>
-void selectionSort(int arr[], int n) {
-    int i, j, minIndex, temp;
+void bubbleSort(int arr[], int n) {
+    int i, j, temp;
     for (i = 0; i < n-1; i++) {
-        minIndex = i;
-        for (j = i+1; j < n; j++) {
-            if (arr[j] < arr[minIndex])
-                minIndex = j;
+        for (j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
         }
-        temp = arr[minIndex];
-        arr[minIndex] = arr[i];
-        arr[i] = temp;
     }
 }
 void printArray(int arr[], int size) {
@@ -21,14 +20,14 @@ int main() {
     int n;
     printf("Enter the number of elements: ");
     scanf("%d", &n);
-    int arr[n]; 
+    int arr[n];  
     printf("Enter %d integers: ", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
     printf("Original array: \n");
     printArray(arr, n);
-    selectionSort(arr, n);
+    bubbleSort(arr, n);
     printf("Sorted array: \n");
     printArray(arr, n);
     return 0;
